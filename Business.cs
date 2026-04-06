@@ -12,20 +12,21 @@ namespace AutoMappersDemo
         }
         public static EmployeeDTO TraditionalApproach()
         {
-            Employee emp = new Employee() 
-            { 
-                Name = "Emp1",
+            var emp = new Employee
+            {
+                FullName = "Employee 1",
                 Salary = 20000,
-                Address = "London",
-                Department = "IT"
+                Address = new Address
+                {
+                    City = "Delhi"
+                }
             };
 
             EmployeeDTO empDTO = new EmployeeDTO() 
             { 
-                Name = emp.Name,
+                Name = emp.FullName,
                 Salary = emp.Salary,
-                Address = emp.Address,
-                Department = emp.Department
+                City = emp.Address.City
             };
 
             return empDTO;
@@ -35,12 +36,14 @@ namespace AutoMappersDemo
 
         public EmployeeDTO AutoMapper()
         {
-            Employee emp2 = new Employee()
+            var emp2 = new Employee
             {
-                Name = "Emp2",
+                FullName = "Employee2",
                 Salary = 20000,
-                Address = "London",
-                Department = "IT"
+                Address = new Address
+                {
+                    City = "Delhi"
+                }
             };
 
             EmployeeDTO emp2DTO = _mapper.Map<EmployeeDTO>(emp2);
