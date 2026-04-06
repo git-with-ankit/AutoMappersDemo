@@ -1,4 +1,6 @@
 
+using Microsoft.Extensions.DependencyInjection;
+
 namespace AutoMappersDemo
 {
     public class Program
@@ -13,6 +15,11 @@ namespace AutoMappersDemo
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+            builder.Services.AddAutoMapper(typeof(Program));/*Scans assembly
+            Finds all classes inheriting Profile
+            Builds one MapperConfiguration internally*/
+
+            builder.Services.AddScoped<Business>();
 
             var app = builder.Build();
 
